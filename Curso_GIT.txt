@@ -1,0 +1,104 @@
+BRANCH ---> SÃO VERSÕES DIFERENTES DO PRÓPRIO SISTEMA
+
+* Quando criamos um repositório, é criado automaticamente uma branch chamada "Master"
+
+MASTER --> VERSÃO PRINCIPAL DO SISTEMA
+
+Commit ---> ENVIAR PARA O GIT AS MODIFICAÇÕES QUE EU FIZ
+
+Comandos úteis:
+
+git init --> inicia repositório git
+
+git status --> varre a página e verifica o que foi adicionado, modificado, deletado, arquivos não monitorados
+
+git add --> para arquivos que o git nunca viu e não está monitorando, temos que adicioná-los ao monitoramente do git
+
+-----------> podemos fazer um por um: git add ARQUIVO.md
+		ou
+-----------> adicionar todos: git add -A
+
+(quando adicionamos um arquivo, o git não irá ficar monitorando 
+
+git commit -m "" --> envia alterações que fiz, junto com um comentário
+
+git commit -am "" --> adiciona tudo pra track e depois faz o commit
+
+git log ---> mostra tudo que foi feito
+
+git branch ---> mostra em qual branch estamos
+
+
+	* REVERTER MODIFICAÇÕES *
+Há 3 formas:
+
+. git reset --soft (volta p/ versão anterior antes dos outros commits)
+
+. git reset --mixed (igual o soft, porém n vai estar preparado pra commitar, teremos q usar o add)
+
+. git reset --hard (apaga todos os outros commits, incluindo pastas e tudo mais, posteriores ao que voltei)
+
+
+	* LIDANDO COM BRANCHS *
+
+Para visualizar a branch que estou:
+. git branch
+
+Para criar uma nova branch:
+. git branch nomeDaBranch
+
+Trocando de branch
+. git checkout teste
+
+
+	* VISUALIZANDO ALTERAÇÕES *
+
+Ver o que foi alterado e em qual arquivo
+. git diff
+
+Ver apenas o nome dos arquivos modificados
+. git diff --name-only
+
+Ver o que foi alterado em arquivo específico
+. git diff nomeArquivo.extensao
+
+Voltando alterações de apenas um arquivo específico
+.git checkout HEAD -- nomeArquivo.ext
+
+OBS: o "HEAD" é o nome da branch atual
+
+
+	* LIDANDO COM GIT REMOTO (GitHub) *
+1 - Criar conta no GitHub e cadastrar chave SSH
+
+2 - Navegar pelo terminal até a pasta que possui o git iniciado (git init) e adicionar o origin remoto
+. git remote add origin https://github.com/diogomarv/outro-repositorio.git
+
+3 - Mudar para a branch master e dar o git push:
+. git push -u origin master
+
+	* REVERTENDO COMMIT *
+
+Este comando irá reverter o que foi alterado. Faz tipo um "commit voltando" sem apagar o anterior. Ele cria outro sem perder o anterior.
+.git revert --no-edit codigoCommitAqui
+
+OBS: podemos ir para um commit em específico, basta utilizar:
+.git checkout hashCommitAqui (QUANDO FAZEMOS ISSO, FICAMOS EM UM ESTADO CHAMADO "DETACHED HEAD", QUE É O COMO SE FOSSE UMA NOVA BRANCH TEMPORÁRIA. SE DESEJARMOS CRIAR UMA NOVA BRANCH PARA RETER OS COMMITS QUE EU DER, TEMOS QUE USAR O .git switch -c <novo-nome-branch>
+ou para reverter essa alteração: . git switch -
+
+
+	* IGNORANDO ARQUIVOS EM GIT *
+Basta criarmos um arquivo chamado .gitignore
+
+
+	* REMOVER BRANCH REMOTO *
+.git push origin :nomeBranch
+
+
+	* REMOVER BRANCH LOCAL *
+.git branch -d nomeBranch
+
+
+	* COMO DAR GIT PULL *
+.git pull origin master
+
